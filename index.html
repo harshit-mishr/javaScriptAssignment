@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array and String Example</title>
+    <style>
+      #output {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="data">Add Data:</label>
+      <input type="text" id="data" />
+      <button type="button" id="addBtn">Add</button>
+    </form>
+    <div id="output"></div>
+    <button type="button" id="lowerBtn">Lowercase</button>
+    <button type="button" id="upperBtn">Uppercase</button>
+    <script>
+      const defaultarrvalue = [
+        "astra",
+        "book",
+        "paper",
+        "bus",
+        "deep",
+        "nehal"
+      ];
+      let arr = defaultarrvalue.slice(); // make a copy of the array
+
+      function displayArray() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.textContent = arr.join(", ");
+      }
+
+      function addData() {
+        const inputData = document.getElementById("data").value.trim();
+        if (inputData !== "") {
+          arr.push(inputData);
+          displayArray();
+          document.getElementById("data").value = "";
+        }
+      }
+
+      function lowercase() {
+        arr = arr.map((item) => item.toLowerCase());
+        displayArray();
+      }
+
+      function uppercase() {
+        arr = arr.map((item) => item.toUpperCase());
+        displayArray();
+      }
+
+      document.getElementById("addBtn").addEventListener("click", addData);
+      document.getElementById("lowerBtn").addEventListener("click", lowercase);
+      document.getElementById("upperBtn").addEventListener("click", uppercase);
+
+      displayArray();
+    </script>
+  </body>
+</html>
